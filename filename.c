@@ -16,7 +16,7 @@
 #if MSDOS_COMPILER==DJGPPC
 #include <glob.h>
 #include <dir.h>
-#define _MAX_PATH	PATH_MAX
+#define _MAX_PATH      PATH_MAX
 #endif
 #endif
 #ifdef _OSK
@@ -29,10 +29,10 @@
 #if HAVE_STAT
 #include <sys/stat.h>
 #ifndef S_ISDIR
-#define	S_ISDIR(m)	(((m) & S_IFMT) == S_IFDIR)
+#define S_ISDIR(m)      (((m) & S_IFMT) == S_IFDIR)
 #endif
 #ifndef S_ISREG
-#define	S_ISREG(m)	(((m) & S_IFMT) == S_IFREG)
+#define S_ISREG(m)      (((m) & S_IFMT) == S_IFREG)
 #endif
 #endif
 
@@ -305,7 +305,7 @@ fexpand(s)
 	char *e;
 	IFILE ifile;
 
-#define	fchar_ifile(c) \
+#define fchar_ifile(c) \
 	((c) == '%' ? curr_ifile : \
 	 (c) == '#' ? old_ifile : NULL_IFILE)
 
@@ -479,8 +479,9 @@ bin_file(f)
 		} else 
 		{
 			LWCHAR c = step_char(&p, +1, edata);
-			if (ctldisp == OPT_ONPLUS && IS_CSI_START(c))
-				skip_ansi(&p, edata);
+			struct ansi_state *pansi;
+			if (ctldisp == OPT_ONPLUS && (pansi = ansi_start(c)) != NULL)
+				skip_ansi(pansi, &p, edata);
 			else if (binary_char(c))
 				bin_count++;
 		}
@@ -641,7 +642,7 @@ lglob(filename)
 		qfilename = shell_quote(p);
 		if (qfilename != NULL)
 		{
-	  		length += strlen(qfilename) + 1;
+			length += strlen(qfilename) + 1;
 			free(qfilename);
 		}
 	}

@@ -889,7 +889,28 @@ v562  5/19/20   Update Unicode tables; minor doc formatting.
 v563  6/13/20   Fix crash due to realpath() incompatibility.
 v564  8/25/20   Handle realpath consistently; update docs.
 v565  11/3/20   Add ESC-U command, optimize calls to realpath().
-v566            fix crash when reopening a file while using LESSOPEN.
+v566  11/25/20  Fix crash when reopening a file while using LESSOPEN;
+                support OSC 8 hyperlinks.
+v567  11/25/20  Fix typo.
+v568  11/29/20  Fix some hyperlink bugs; add ^W search modifier
+                (thanks to Arminius); allow Makefile.aut to use Python 
+                instead of Perl (thanks to Charlie Lin).
+v569  12/1/20   Allow multiple & filters (thanks to Mattias Johansson),
+                allow ^X to exit F command.
+v570  12/12/20  Better handling of multiple + or -p options;
+                fix bugs in horizontal scrolling.
+v571  12/30/20  Add --line-num-width and --status-col-width options.
+v572  1/4/21    Save lastmark in history file; don't toggle mouse reporting;
+                implement termcap delays.
+v573  1/9/21    Limit eof bell to 1 per second.
+v574  1/13/21   Add incremental search.
+v575  1/17/21   Fix build without HILITE_SEARCH;
+                fix bug with ^K in lesskey extra string.
+v576  2/4/21    Make sure search result is visible; add --use-color and --color.
+v577  2/9/21    Use ttyname to get name of tty device.
+v578  2/9/21    Doc
+v579  2/14/21   Fix double-width char bugs and non-match search crash.
+v580
 */
 
-char version[] = "566x";
+char version[] = "580x";
